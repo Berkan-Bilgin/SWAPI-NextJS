@@ -1,63 +1,52 @@
-import React, { useState, useEffect } from "react";
-import InfiniteScroll from "react-infinite-scroll-component";
-import getSwapiData from "@/lib/swapi";
-import Layout from "@/components/Layout";
+import Layout from "../components/Layout";
+import useStarships from "../hooks/useStarships";
+import StarshipCard from "@/components/StarshipCard";
+import useFilterStarships from "../hooks/useFilterStarships";
+import { useEffect, useState } from "react";
 
+const StarshipsPage = () => {
+  const { starships, loadMoreStarships, displayedStarships, allDataFetched } = useStarships();
+  const [filter, setFilter] = useState("");
+  const filteredStarships = useFilterStarships(starships, filter);
 
-interface Starship {
-  name: string;
-  model: string;
-  manufacturer: string;
-}
+  const shouldDisplayFiltered = filter.length >= 2;
 
-const StarshipCard: React.FC<Starship> = ({ name, model, manufacturer }) => {
-  return (
-    <div className="bg-white rounded-md shadow-md p-4 mb-4">
-      <p className="font-bold">{name}</p>
-      <p>{model}</p>
-      <p>{manufacturer}</p>
-    </div>
-  );
-};
-
-const Starships: React.FC = () => {
-  const [starships, setStarships] = useState<Starship[]>([]);
-  const [hasMore, setHasMore] = useState<boolean>(true);
-  const [page, setPage] = useState<number>(1);
-
-  useEffect(() => {
-    getSwapiData(`https://swapi.dev/api/starships/?page=${page}`).then(
-      (data: any) => {
-        setStarships([...starships, ...data.results]);
-        setHasMore(!!data.next);
-      }
-    );
-  }, [page]);
-
-  const handleLoadMore = () => {
-    setPage(page + 1);
+  const handleFilter = (query) => {
+    setFilter(query);
   };
 
+  const hasMore = displayedStarships.length < starships.length;
+
+  useEffect(() => {
+    console.log(starships);
+    console.log(allDataFetched)
+  }, [starships]);
+
+
   return (
-    <Layout>
-      <div className="container mx-auto">
-        <h1 className="text-2xl font-bold mb-4">Starships</h1>
-        <InfiniteScroll
-          dataLength={starships.length}
-          next={handleLoadMore}
-          hasMore={hasMore}
-          loader={<h4>Loading...</h4>}
-          endMessage={<p>No more items.</p>}
+    <Layout onSearch={handleFilter} allDataFetched={allDataFetched}>
+    <h1 className="text-2xl font-semibold mb-4">Planets</h1>
+    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+      {(shouldDisplayFiltered ? filteredStarships : displayedStarships).map(
+        (starship, index) => (
+          <StarshipCard key={starships.url} starship={starship}  />
+        )
+      )}
+    </div>
+    {hasMore && !shouldDisplayFiltered && (
+      <div className="col-span-full mt-4 flex justify-center">
+        <button
+          onClick={loadMoreStarships}
+          className="bg-white text-2xl font-semibold mb-4"
+          disabled={!allDataFetched}
         >
-          <div className="grid gap-4 grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
-            {starships.map((starship: Starship) => (
-              <StarshipCard key={starship.name} {...starship} />
-            ))}
-          </div>
-        </InfiniteScroll>
+         {allDataFetched ? "Load More" : "Loading..."} {/* Eğer allDataFetched durumu false ise "Loading..." yazısı görünecek */}
+        </button>
+       
       </div>
-    </Layout>
+    )}
+  </Layout>
   );
 };
 
-export default Starships;
+export default StarshipsPage;

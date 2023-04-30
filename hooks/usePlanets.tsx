@@ -5,6 +5,7 @@ const usePlanets = () => {
   const [planets, setPlanets] = useState([]);
   const [displayedPlanets, setDisplayedPlanets] = useState([]);
   const [displayedCount, setDisplayedCount] = useState(9);
+  const [allDataFetched, setAllDataFetched] = useState(false); // Yeni değişken
 
   const fetchPlanets = async (url) => {
     if (!url) return;
@@ -16,6 +17,8 @@ const usePlanets = () => {
 
     if (data.next) {
       fetchPlanets(data.next);
+    } else {
+      setAllDataFetched(true); // Tüm veriler çekildikten sonra değeri 'true' olarak güncelle
     }
   };
 
@@ -35,7 +38,7 @@ const usePlanets = () => {
     );
   };
 
-  return { planets, displayedPlanets, loadMorePlanets };
+  return { planets, displayedPlanets, loadMorePlanets, allDataFetched }; // Yeni değişkeni döndür
 };
 
 export default usePlanets;

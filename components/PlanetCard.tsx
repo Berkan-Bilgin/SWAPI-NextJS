@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { ForwardedRef } from 'react';
 import { useRouter } from 'next/router';
 
 interface Planet {
@@ -13,7 +13,7 @@ interface PlanetCardProps {
   planet: Planet;
 }
 
-const PlanetCard: React.FC<PlanetCardProps> = ({ planet }) => {
+const PlanetCard = React.forwardRef<HTMLDivElement, PlanetCardProps>(({ planet }, ref) => {
   const router = useRouter();
 
   const handleDetailsClick = () => {
@@ -21,7 +21,7 @@ const PlanetCard: React.FC<PlanetCardProps> = ({ planet }) => {
   };
 
   return (
-    <div className="bg-white rounded-lg shadow-md p-4">
+    <div ref={ref} className="bg-white rounded-lg shadow-md p-4">
       <h2 className="text-xl font-semibold mb-2">{planet.name}</h2>
       <p>Population: {planet.population}</p>
       <p>Climate: {planet.climate}</p>
@@ -31,6 +31,6 @@ const PlanetCard: React.FC<PlanetCardProps> = ({ planet }) => {
       </button>
     </div>
   );
-};
+});
 
 export default PlanetCard;
