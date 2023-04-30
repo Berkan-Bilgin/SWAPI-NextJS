@@ -12,11 +12,11 @@ const data = [
 
 const Sidebar = () => {
   return (
-    <div className="w-60 p-4 sticky top-28">
+    <div className="sm:w-100 md:w-36 lg:w-52 sticky top-28  mx-4">
       {data.map((item, index) => (
         <Link href={`/${item.title.toLowerCase()}`} key={index}>
-          <div className="flex justify-between items-center py-2 px-4 rounded-lg bg-red-700 mb-2 cursor-pointer">
-            <span>{item.title}</span>            
+          <div className="flex justify-between items-center py-2 px-4 rounded-lg bg-red-700 mb-3 cursor-pointer">
+            <span>{item.title}</span>
           </div>
         </Link>
       ))}
