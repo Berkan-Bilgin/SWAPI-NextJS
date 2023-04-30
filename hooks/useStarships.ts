@@ -5,7 +5,7 @@ const useStarships = () => {
   const [starships, setStarships] = useState([]);
   const [displayedStarships, setDisplayedStarships] = useState([]);
   const [displayedCount, setDisplayedCount] = useState(9);
-  const [allDataFetched, setAllDataFetched] = useState(false); // Yeni değişken
+  const [allDataFetched, setAllDataFetched] = useState(false);
 
   const fetchStarships = async (url) => {
     if (!url) return;
@@ -18,7 +18,7 @@ const useStarships = () => {
     if (data.next) {
       fetchStarships(data.next);
     } else {
-      setAllDataFetched(true); // Tüm veriler çekildikten sonra değeri 'true' olarak güncelle
+      setAllDataFetched(true);
     }
   };
 
@@ -38,7 +38,22 @@ const useStarships = () => {
     );
   };
 
-  return { starships, displayedStarships, loadMoreStarships, allDataFetched }; // Yeni değişkeni döndür
+  const getStarshipByUrl = async (url) => {
+    if (!url) return;
+
+    const response = await axios.get(url);
+    const starship = response.data;
+
+    return starship;
+  };
+
+  return {
+    starships,
+    displayedStarships,
+    loadMoreStarships,
+    allDataFetched,
+    getStarshipByUrl, // Yeni fonksiyonu döndür
+  };
 };
 
 export default useStarships;
