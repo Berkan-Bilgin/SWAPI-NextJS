@@ -10,7 +10,7 @@ interface LayoutProps {
 const Layout: React.FC<LayoutProps> = ({ children, onSearch }) => {
   return (
     <div className="layout-container">
-      <Header search={onSearch}></Header>
+      <Header onSearch={onSearch}></Header>
 
       <div className="flex">
         <div>

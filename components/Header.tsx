@@ -4,16 +4,16 @@ import Link from "next/link";
 
 interface HeaderProps {
   className?: string;
-  search?: (query: string) => void;
+  onSearch?: (query: string) => void;
 }
 
-const Header: React.FC<HeaderProps> = ({ search }) => {
+const Header: React.FC<HeaderProps> = ({ onSearch }) => {
   const [query, setQuery] = useState("");
 
   const handleSearch = (e: React.ChangeEvent<HTMLInputElement>) => {
     setQuery(e.target.value);
-    if (search) {
-      search(e.target.value);
+    if (onSearch) {
+      onSearch(e.target.value);
     }
   };
 
@@ -28,7 +28,6 @@ const Header: React.FC<HeaderProps> = ({ search }) => {
               alt="Logo"
               width={100} // Logo genişliğini ayarlayın
               height={40} // Logo yüksekliğini ayarlayın
-              
             />
           </Link>
         </div>
