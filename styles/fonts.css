@@ -1,0 +1,13 @@
+@font-face {
+    font-family: 'Star Wars';
+    src: url('/fonts/SfDistantGalaxyAltoutline-e2Bp.ttf') format('truetype');
+}
+
+.starfont {
+    font-family: 'Star Wars', sans-serif;
+    color: red;
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+
+}

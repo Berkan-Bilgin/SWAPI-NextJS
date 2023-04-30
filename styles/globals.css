@@ -2,6 +2,8 @@
 @tailwind components;
 @tailwind utilities;
 
+
+
 .main-background {
   min-height: 100vh;
   position: relative;
@@ -29,3 +31,104 @@
 }
 
 
+/* Input  */
+
+input:focus {
+  outline: none;
+  border: 1px solid rgba(255, 0, 0, 0.5);
+  box-shadow: 0 0 0 3px rgba(255, 0, 0, 0.5);
+  animation: pulse 3s infinite;
+}
+
+@keyframes pulse {
+  0% {
+    border-color: rgba(255, 0, 0, 0.5);
+    box-shadow: 0 0 0 0 rgba(255, 0, 0, 0.5);
+  }
+  50% {
+    border-color: rgba(255, 0, 0, 0.9);
+    box-shadow: 0 0 0 10px rgba(255, 0, 0, 0.3);
+  }
+  100% {
+    border-color: rgba(255, 0, 0, 0.5);
+    box-shadow: 0 0 0 0 rgba(255, 0, 0, 0.5);
+  }
+}
+
+.button-eye span {
+  position: absolute;
+  top: 50%;
+  
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background-color: red;
+  transition: all 0.2s ease-in-out;
+}
+
+.button-eye:hover span {
+  animation: pulseeye 3s ease-in-out infinite;
+}
+
+@keyframes pulseeye {
+  0% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  50% {
+    transform: scale(3);
+    opacity: 0.7;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+.starfont{
+  color: yellow;
+  font-size: 32px;
+
+}
+
+
+
+.star-wars {
+  overflow: hidden;
+  position: relative;
+  height: 600px;
+  perspective: 300px;
+  transform-style: preserve-3d;
+}
+
+.crawl {
+  position: relative;
+  top: 9999px;
+  bottom: -250%;
+  transform-origin: 50% 100%;
+  animation: crawl 240s linear forwards;
+  font-family: "Star Wars", sans-serif;
+  font-size: 2em;
+  text-align: justify;
+  color: yellow;
+}
+
+.title p {
+  font-size: 0.5em;
+  margin-bottom: -5em;
+}
+
+.title h1 {
+  margin-bottom: 2em;
+}
+
+@keyframes crawl {
+  0% {
+    top: 0;
+    transform: rotateX(20deg) translateY(100%);
+  }
+  100% {
+    top: -10000px;
+    transform: rotateX(25deg) translateY(-50%) scale(0.2);
+  }
+}

@@ -1,5 +1,5 @@
 import React, { forwardRef } from "react";
-import { useRouter } from 'next/router';
+import { useRouter } from "next/router";
 
 interface Starship {
   name: string;
@@ -16,17 +16,24 @@ const StarshipCard = forwardRef<HTMLDivElement, StarshipCardProps>(
   ({ starship }, ref) => {
     const router = useRouter();
     const handleDetailsClick = () => {
-      const starshipId = starship.url.split('/').slice(-2, -1); // Yıldız gemisi ID'sini url'den çıkarın
+      const starshipId = starship.url.split("/").slice(-2, -1); // Yıldız gemisi ID'sini url'den çıkarın
       router.push(`/starship-details/${starshipId}`); // Yıldız gemisi ID'sini kullanarak yönlendirme yapın
     };
     return (
-      <div ref={ref} className="bg-white p-4 rounded-lg shadow-md mb-4">
+      <div
+        ref={ref}
+        className="relative bg-gray-600 p-4 rounded-lg shadow-md mb-4 border border-red-500 bg-opacity-50"
+      >
         <p className="font-bold mb-2">{starship.name}</p>
         <p className="text-gray-600 text-sm mb-2">{starship.model}</p>
         <p className="text-gray-600 text-sm">{starship.manufacturer}</p>
-        <button onClick={handleDetailsClick} className="mt-4 bg-blue-500 text-white px-4 py-2 rounded">
-        Details
-      </button>
+        <button
+  onClick={handleDetailsClick}
+  className="absolute bottom-0 right-0 mr-4 mb-4 bg-red-500 text-gray- px-4 py-2 rounded hover:bg-red-600"
+  style={{ backgroundColor: 'rgba(167, 19, 19, 0.801)' }}
+>
+  Details
+</button>
       </div>
     );
   }
