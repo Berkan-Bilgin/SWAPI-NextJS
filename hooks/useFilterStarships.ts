@@ -9,7 +9,8 @@ const useFilterStarships = (starships, filter) => {
     } else {
       const searchTerm = filter.toLowerCase();
       const result = starships.filter((starship) =>
-        starship.name.toLowerCase().includes(searchTerm)
+        starship.name.toLowerCase().includes(searchTerm) ||
+        starship.model.toLowerCase().includes(searchTerm)
       );
       setFilteredStarships(result);
     }
