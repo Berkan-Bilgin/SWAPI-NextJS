@@ -28,12 +28,12 @@ const StarshipCard = forwardRef<HTMLDivElement, StarshipCardProps>(
         <p className="text-gray-600 text-sm mb-2">{starship.model}</p>
         <p className="text-gray-600 text-sm">{starship.manufacturer}</p>
         <button
-  onClick={handleDetailsClick}
-  className="absolute bottom-0 right-0 mr-4 mb-4 bg-red-500 text-gray- px-4 py-2 rounded hover:bg-red-600"
-  style={{ backgroundColor: 'rgba(167, 19, 19, 0.801)' }}
->
-  Details
-</button>
+          onClick={handleDetailsClick}
+          className="absolute bottom-0 right-0 mr-4 mb-4 bg-red-500 text-gray- px-4 py-2 rounded hover:bg-red-600"
+          style={{ backgroundColor: 'rgba(167, 19, 19, 0.801)' }}
+        >
+          Details
+        </button>
       </div>
     );
   }
