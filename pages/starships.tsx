@@ -17,7 +17,7 @@ const StarshipsPage = () => {
   };
 
   const hasMore = displayedStarships.length < starships.length;
-
+ 
   useEffect(() => {
     console.log(starships);
     console.log(allDataFetched);
