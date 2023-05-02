@@ -1,7 +1,14 @@
 import { useState, useEffect } from 'react';
 
-const useFilterStarships = (starships, filter) => {
-  const [filteredStarships, setFilteredStarships] = useState([]);
+interface Starship {
+  name: string;
+  model: string;
+  manufacturer: string;
+  url: string;
+}
+
+const useFilterStarships = (starships: Starship[], filter: string) => {
+  const [filteredStarships, setFilteredStarships] = useState<Starship[]>([]);
 
   useEffect(() => {
     if (!filter) {

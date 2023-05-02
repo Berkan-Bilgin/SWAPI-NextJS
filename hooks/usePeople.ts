@@ -8,7 +8,7 @@ const usePeople = () => {
   
   
 
-  const fetchAllPeople = async (url) => {
+  const fetchAllPeople = async (url:any) => {
     if (!url || loading) return;
 
     setLoading(true);
