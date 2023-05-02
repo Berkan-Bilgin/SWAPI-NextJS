@@ -16,24 +16,7 @@ const StarshipsPage = () => {
   };
 
   const hasMore = displayedStarships.length < starships.length;
-  const lastStarshipRef = useRef(null);
-
-  // Yeni scroll durumu
-  const [scroll, setScroll] = useState(false);
-
-  // Load More düğmesine tıklanınca scroll durumunu güncelleyin
-  const handleLoadMore = () => {
-    loadMoreStarships();
-    setScroll(true);
-  };
-
-  useEffect(() => {
-    if (scroll && lastStarshipRef.current) {
-      lastStarshipRef.current.scrollIntoView({ behavior: "smooth" });
-      setScroll(false);
-    }
-  }, [displayedStarships, scroll]);
-
+  
   useEffect(() => {
     console.log(starships);
     console.log(allDataFetched);
@@ -48,14 +31,13 @@ const StarshipsPage = () => {
           <StarshipCard
             key={starship.url}
             starship={starship}
-            ref={index === displayedStarships.length - 1 ? lastStarshipRef : null}
           />
         ))}
       </div>
       {hasMore && !shouldDisplayFiltered && (
         <div className="col-span-full mt-4 flex justify-center">
           <button
-            onClick={handleLoadMore}
+            onClick={loadMoreStarships}
             className="button-eye w-60 text-gray-700 text-2xl font-semibold mb-4 relative"
             disabled={!allDataFetched}
           >
