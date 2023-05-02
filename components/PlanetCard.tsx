@@ -1,4 +1,4 @@
-import React, { ForwardedRef } from 'react';
+import React from 'react';
 import { useRouter } from 'next/router';
 
 interface Planet {
@@ -33,4 +33,5 @@ const PlanetCard = React.forwardRef<HTMLDivElement, PlanetCardProps>(({ planet }
   );
 });
 
+PlanetCard.displayName = "PlanetCard";
 export default PlanetCard;

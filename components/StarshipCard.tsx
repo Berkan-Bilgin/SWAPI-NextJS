@@ -1,6 +1,7 @@
 import React, { forwardRef } from "react";
 import { useRouter } from "next/router";
 import { getStarshipImageByName } from "@/helpers";
+import Image from "next/image";
 
 interface Starship {
   name: string;
@@ -28,13 +29,18 @@ const StarshipCard = forwardRef<HTMLDivElement, StarshipCardProps>(
       >
         <p className="text-center font-bold mb-2">{starship.name}</p>
         {starshipImage && (
-        <div className="w-full flex justify-center">
-          <img
-            src={starshipImage}
-            alt={starship.name}
-            className="w-3/4 h-32 object-cover object-center rounded-lg mb-4"
-          />
-        </div>
+           <div className="w-full flex justify-center ">
+            <div style={{ width: "75%" }} className="relative mb-4 h-32">
+              <Image
+                src={starshipImage}
+                alt={starship.name}
+                layout="fill"
+                objectFit="cover"
+                objectPosition="center"
+                className="rounded-lg"
+              />
+            </div>
+         </div>
       )}
         <p className="text-gray-600 text-sm mb-2">{starship.model}</p>
         <p className="text-gray-600 text-sm">{starship.manufacturer}</p>
@@ -50,4 +56,5 @@ const StarshipCard = forwardRef<HTMLDivElement, StarshipCardProps>(
   }
 );
 
+StarshipCard.displayName = "StarshipCard";
 export default StarshipCard;
