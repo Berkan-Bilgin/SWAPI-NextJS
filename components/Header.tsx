@@ -5,6 +5,7 @@ import styles from "@/styles/header.module.css"
 interface HeaderProps {
   className?: string;
   onSearch?: (query: string) => void;
+  inputDisabled?: boolean;
 }
 
 const Header: React.FC<HeaderProps> = ({ onSearch, inputDisabled }) => {

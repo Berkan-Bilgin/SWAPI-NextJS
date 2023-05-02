@@ -6,6 +6,7 @@ import Footer from "./Footer";
 interface LayoutProps {
   children: ReactNode;
   onSearch?: (query: string) => void;
+  allDataFetched?: boolean;
 }
 
 const Layout: React.FC<LayoutProps> = ({ children, onSearch, allDataFetched }) => {
