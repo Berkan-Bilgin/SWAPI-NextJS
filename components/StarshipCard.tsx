@@ -6,7 +6,7 @@ import Image from "next/image";
 interface Starship {
   name: string;
   model: string;
-  hyperdrive_rating: string;
+  hyperdrive_rating?: string;
   url: string; // Yeni url alanını ekleyin
 }
 
