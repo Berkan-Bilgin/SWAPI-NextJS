@@ -13,7 +13,7 @@ const StarshipsPage = () => {
 
   const shouldDisplayFiltered = filter.length >= 2;
 
-  const handleFilter = (query) => {
+  const handleFilter = (query:any) => {
     setFilter(query);
   };
 

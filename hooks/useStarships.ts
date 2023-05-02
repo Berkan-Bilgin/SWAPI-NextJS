@@ -1,13 +1,34 @@
 import { useState, useEffect } from 'react';
 import axios from 'axios';
 
+interface Starship {
+  name: string;
+  model: string;
+  manufacturer: string;
+  cost_in_credits: string;
+  length: string;
+  max_atmosphering_speed: string;
+  crew: string;
+  passengers: string;
+  cargo_capacity: string;
+  consumables: string;
+  hyperdrive_rating: string;
+  MGLT: string;
+  starship_class: string;
+  pilots: string[];
+  films: string[];
+  created: string;
+  edited: string;
+  url: string;
+}
+
 const useStarships = () => {
-  const [starships, setStarships] = useState([]);
-  const [displayedStarships, setDisplayedStarships] = useState([]);
+  const [starships, setStarships] = useState<Starship[]>([]);
+  const [displayedStarships, setDisplayedStarships] = useState<Starship[]>([]);
   const [displayedCount, setDisplayedCount] = useState(9);
   const [allDataFetched, setAllDataFetched] = useState(false);
 
-  const fetchStarships = async (url) => {
+  const fetchStarships = async (url:any) => {
     if (!url) return;
 
     const response = await axios.get(url);
@@ -38,7 +59,7 @@ const useStarships = () => {
     );
   };
 
-  const getStarshipByUrl = async (url) => {
+  const getStarshipByUrl = async (url:any) => {
     if (!url) return;
 
     const response = await axios.get(url);
