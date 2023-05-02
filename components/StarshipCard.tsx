@@ -6,7 +6,7 @@ import Image from "next/image";
 interface Starship {
   name: string;
   model: string;
-  manufacturer: string;
+  hyperdrive_rating: string;
   url: string; // Yeni url alanını ekleyin
 }
 
@@ -43,7 +43,7 @@ const StarshipCard = forwardRef<HTMLDivElement, StarshipCardProps>(
          </div>
       )}
         <p className="text-gray-600 text-sm mb-2">{starship.model}</p>
-        <p className="text-gray-600 text-sm">{starship.manufacturer}</p>
+        <p className="text-gray-600 text-sm">{starship.hyperdrive_rating}</p>
         <button
           onClick={handleDetailsClick}
           className="absolute bottom-0 right-0 mr-4 mb-4 bg-red-500 text-gray- px-4 py-2 rounded hover:bg-red-600"
