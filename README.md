@@ -6,6 +6,8 @@ In this project, we develop a Star Wars database application using 🌌 SWAPI (S
 
 This application allows users to explore and learn about 🚀starships🚀 from the Star Wars universe, utilizing data fetched from SWAPI.
 
+https://user-images.githubusercontent.com/108589573/235933827-17838131-a75b-4438-93be-8d65c520c138.mp4
+
 ## 🎮 Demo
 
 Experience the live demo of the project here: [https://fmssbilisimfinalproject.vercel.app/](https://fmssbilisimfinalproject.vercel.app/)
