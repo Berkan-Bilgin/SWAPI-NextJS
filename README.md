@@ -1,4 +1,4 @@
-# 🚀 FMSS BILISIM Frontend Practicum Final Project: SWAPI Next.js
+# 🚀 FMSS Bilişim Frontend Practicum Final Project: SWAPI Next.js
 
 In this project, we develop a Star Wars database application using 🌌 SWAPI (Star Wars API), Next.js, TypeScript, and Tailwind CSS.
 
