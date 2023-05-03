@@ -2,7 +2,15 @@
 @tailwind components;
 @tailwind utilities;
 
+.starfont{
+  color: yellow;
+  font-size: 32px;
+}
 
+
+
+
+/* LAYOUT */
 
 .main-background {
   min-height: 100vh;
@@ -55,6 +63,8 @@ input:focus {
   }
 }
 
+/* Button EYE */
+
 .button-eye span {
   position: absolute;
   top: 50%;
@@ -85,13 +95,9 @@ input:focus {
   }
 }
 
-.starfont{
-  color: yellow;
-  font-size: 32px;
-
-}
 
 
+/* KAYAN YAZI */
 
 .star-wars {
   overflow: hidden;
@@ -134,7 +140,7 @@ input:focus {
 }
 
 
-/* LightSaber */
+/* Loader */
 
 .lightsaber-loader {
   width: 100%;

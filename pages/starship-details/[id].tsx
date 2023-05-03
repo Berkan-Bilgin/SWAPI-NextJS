@@ -1,7 +1,7 @@
-import React from 'react';
-import StarshipsDetailsPage from '@/components/StarshipDetailsPage';
-import { GetServerSideProps, NextPage } from 'next';
-import { ParsedUrlQuery } from 'querystring';
+import React from "react";
+import StarshipsDetailsPage from "@/components/StarshipDetailsPage";
+import { GetServerSideProps, NextPage } from "next";
+import { ParsedUrlQuery } from "querystring";
 
 interface Starship {
   name: string;
@@ -32,13 +32,16 @@ const StarshipDetails: NextPage<StarshipDetailsProps> = ({ starship }) => {
   return <StarshipsDetailsPage starship={starship} />;
 };
 
-export const getServerSideProps: GetServerSideProps<StarshipDetailsProps, ParsedUrlQuery> = async (context) => {
+export const getServerSideProps: GetServerSideProps<
+  StarshipDetailsProps,
+  ParsedUrlQuery
+> = async (context) => {
   const starshipId = context.params?.id;
 
   if (!starshipId) {
     return {
-      notFound: true
-    }
+      notFound: true,
+    };
   }
 
   // SWAPI URL'sinde name değil, ID kullanıldığı için URL'yi ID'ye göre düzenliyoruz
@@ -52,6 +55,6 @@ export const getServerSideProps: GetServerSideProps<StarshipDetailsProps, Parsed
       starship,
     },
   };
-}
+};
 
 export default StarshipDetails;

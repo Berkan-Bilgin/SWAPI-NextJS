@@ -73,7 +73,7 @@ const useStarships = () => {
     displayedStarships,
     loadMoreStarships,
     allDataFetched,
-    getStarshipByUrl, // Yeni fonksiyonu döndür
+    getStarshipByUrl, 
   };
 };
 
