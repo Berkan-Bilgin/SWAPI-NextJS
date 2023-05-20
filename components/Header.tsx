@@ -11,7 +11,9 @@ interface HeaderProps {
 const Header: React.FC<HeaderProps> = ({ onSearch, inputDisabled }) => {
   const [query, setQuery] = useState("");
 
+//Arama çubuğunda bir değişiklik olduğunda tetiklenir.
   const handleSearch = (e: React.ChangeEvent<HTMLInputElement>) => {
+
     setQuery(e.target.value);
     if (onSearch) {
       onSearch(e.target.value);
