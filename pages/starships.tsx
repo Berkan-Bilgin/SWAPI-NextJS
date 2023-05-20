@@ -6,24 +6,25 @@ import useFilterStarships from "../hooks/useFilterStarships";
 import Lightsaber from "@/components/Lightsaber";
 
 const StarshipsPage = () => {
-  const { starships, loadMoreStarships, displayedStarships, allDataFetched } = useStarships();
+  const { starships, loadMoreStarships, displayedStarships, allDataFetched } =
+    useStarships();
   const [filter, setFilter] = useState("");
-  const [loading, setLoading] = useState(true); // Veri yüklemesini izlemek için bir loading state'i ekleyin
+  const [loading, setLoading] = useState(true); // Veri yüklemesini izlemek için bir loading state'i
   const filteredStarships = useFilterStarships(starships, filter);
 
   const shouldDisplayFiltered = filter.length >= 2;
 
-  const handleFilter = (query:any) => {
+  const handleFilter = (query: any) => {
     setFilter(query);
   };
 
   const hasMore = displayedStarships.length < starships.length;
-  
+
   useEffect(() => {
     console.log(starships);
     console.log(allDataFetched);
     if (starships.length > 0) {
-      setLoading(false); // Veriler geldiğinde loading durumunu güncelleyin
+      setLoading(false); // Veriler geldiğinde loading durumunu güncelle
     }
   }, [starships]);
 
@@ -35,11 +36,11 @@ const StarshipsPage = () => {
         <>
           <h1 className="starfont text-2xl font-semibold mb-4">Starships</h1>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
-            {(shouldDisplayFiltered ? filteredStarships : displayedStarships).map((starship, index) => (
-              <StarshipCard
-                key={starship.url}
-                starship={starship}
-              />
+            {(shouldDisplayFiltered
+              ? filteredStarships
+              : displayedStarships
+            ).map((starship, index) => (
+              <StarshipCard key={starship.url} starship={starship} />
             ))}
           </div>
           {hasMore && !shouldDisplayFiltered && (

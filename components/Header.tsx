@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import styles from "@/styles/header.module.css"
+import styles from "@/styles/header.module.css";
 interface HeaderProps {
   className?: string;
   onSearch?: (query: string) => void;
@@ -21,17 +21,19 @@ const Header: React.FC<HeaderProps> = ({ onSearch, inputDisabled }) => {
   };
 
   return (
-    <header className={`${styles["header-background"]} bg-black shadow-md py-4 sticky top-0 z-10 bg-opacity-90`}>
+    <header
+      className={`${styles["header-background"]} bg-black shadow-md py-4 sticky top-0 z-10 bg-opacity-90`}
+    >
       <div className="container flex flex-wrap items-center justify-center">
         <div className="w-full md:w-1/5 flex justify-center md:justify-start items-center">
           {/* Sol taraftaki logo */}
           <Link href="/">
             <div className="lg:ml-12 flex justify-center w-full cursor-pointer">
               <Image
-                src="/images/sw-logo.png" // Logo dosya yolunu buraya girin
+                src="/images/sw-logo.png"
                 alt="Logo"
-                width={100} // Logo genişliğini ayarlayın
-                height={40} // Logo yüksekliğini ayarlayın
+                width={100}
+                height={40}
               />
             </div>
           </Link>
@@ -49,7 +51,6 @@ const Header: React.FC<HeaderProps> = ({ onSearch, inputDisabled }) => {
         </div>
         <div className="w-full md:w-1/5 md:flex md:justify-end items-center mt-4 md:mt-0">
           {/* Sağ taraftaki boş alan */}
-          
         </div>
       </div>
     </header>
