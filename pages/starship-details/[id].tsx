@@ -2,6 +2,7 @@ import React from "react";
 import StarshipsDetailsPage from "@/components/StarshipDetailsPage";
 import { GetServerSideProps, NextPage } from "next";
 import { ParsedUrlQuery } from "querystring";
+import axios from "axios";
 
 interface Starship {
   name: string;
@@ -47,8 +48,11 @@ export const getServerSideProps: GetServerSideProps<
   // SWAPI URL'sinde name değil, ID kullanıldığı için URL'yi ID'ye göre düzenliyoruz
   const starshipUrl = `https://swapi.dev/api/starships/${starshipId}/`;
 
-  const response = await fetch(starshipUrl);
-  const starship = await response.json();
+  // const response = await fetch(starshipUrl);
+  // const starship = await response.json();
+
+  const response = await axios.get(starshipUrl);
+  const starship = response.data;
 
   return {
     props: {
