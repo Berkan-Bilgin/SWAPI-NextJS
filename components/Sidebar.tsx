@@ -8,6 +8,7 @@ const data = [
   // { title: "Species" },
   // { title: "Vehicles" },
   { title: "Starships" },
+  { title: "Starshipstry" },
 ];
 
 const Sidebar = () => {
